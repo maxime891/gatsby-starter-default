@@ -1,128 +1,158 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
+import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+import profilImage from "../images/profil.jpg"
+import "../styles/profile.css"
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great YOLLLLOOOOOOOOOOOOO   ent. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-  },
-]
+const IndexPage = () => {
+  const [isLoaded, setIsLoaded] = useState(false)
 
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
+  useEffect(() => {
+    // Trigger animation after component mounts
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 100)
 
-const moreLinks = [
-  { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
+    return () => clearTimeout(timer)
+  }, [])
 
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
+  const socialLinks = [
+    {
+      id: 'private',
+      icon: '🔒',
+      text: 'My private content',
+      url: 'https://onlyfans.com/briannabums/c458',
+      className: 'private',
+      ariaLabel: 'Access private content'
+    },
+    {
+      id: 'instagram',
+      icon: '📷',
+      text: 'My Instagram account',
+      url: 'https://www.instagram.com/briannabums/',
+      className: 'instagram',
+      ariaLabel: 'Visit Instagram profile'
+    },
+    {
+      id: 'bluesky',
+      icon: '☁️',
+      text: 'My BlueSky account',
+      url: 'https://bsky.app/profile/briannabums.bsky.social',
+      className: 'bluesky',
+      ariaLabel: 'Visit BlueSky profile'
+    },{/*
+    {
+      id: 'youtube',
+      icon: '📺',
+      text: 'My YouTube Channel',
+      url: '#', // Replace with actual YouTube URL
+      className: 'youtube',
+      ariaLabel: 'Visit YouTube channel'
+    }   */}
+  ]
 
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
-      />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
-    </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
-  </Layout>
+  const profileData = {
+    username: '@briannabums',
+    displayName: 'Brianna Bums',
+    location: 'Chicago',
+    bio: 'Dive into My World !',
+    verified: true
+  }
+
+  return (
+    <Layout>
+      <div className="profile-container">
+        <div className={`profile-card ${isLoaded ? 'loaded' : ''}`}>
+          {/* Header */}
+          <div className="profile-header">
+            <a
+              href="https://bestgirlscontent.netlify.app/"
+              className="header-link"
+              aria-label="Visit My Friends website"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <h2>My Friends</h2>
+            </a>
+          </div>
+
+          {/* Avatar */}
+          <div className="profile-avatar">
+            <img
+              src={profilImage}
+              alt={`${profileData.displayName}'s profile`}
+              loading="eager"
+              onError={(e) => {
+                e.target.style.display = 'none'
+                console.warn('Profile image failed to load')
+              }}
+            />
+            <div className="avatar-ring"></div>
+          </div>
+
+          {/* Profile Info */}
+          <div className="profile-info">
+            <h3 className="username">
+              {profileData.username}
+              {profileData.verified && (
+                <span className="verified-badge" title="Verified account">
+                  ✓
+                </span>
+              )}
+            </h3>
+
+            <p className="location">📍 {profileData.location}</p>
+
+            <h2 className="display-name">{profileData.displayName}</h2>
+
+            <div className="social-icons" role="presentation">
+              <span title="Photography">📷</span>
+              <span title="Social Media">🐦</span>
+              <span title="Video Content">📺</span>
+            </div>
+
+            <p className="bio">{profileData.bio}</p>
+          </div>
+
+          {/* Link Buttons */}
+          <div className="link-buttons">
+            {socialLinks.map((link, index) => (
+              <a
+                key={link.id}
+                href={link.url}
+                className={`link-button ${link.className}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.ariaLabel}
+                style={{
+                  animationDelay: `${index * 0.1}s`
+                }}
+              >
+                <span className="link-icon">{link.icon}</span>
+                <span className="link-text">{link.text}</span>
+              </a>
+            ))}
+          </div>
+
+          {/* Footer */}
+          <div className="profile-footer">
+            <p className="footer-text">
+              Built with 💜 using Gatsby
+            </p>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  )
+}
+
+export const Head = () => (
+  <Seo
+    title="Brianna Bums - My Links"
+    description="Connect with Brianna Bums - Find all my social media links and content in one place"
+    keywords="brianna bums, social media, links, chicago, content creator"
+    image={profilImage}
+  />
 )
-
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="Home" />
 
 export default IndexPage
