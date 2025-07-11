@@ -29,7 +29,7 @@ const IndexPage = () => {
       id: 'instagram',
       icon: '📷',
       text: 'My Instagram account',
-      url: 'https://www.instagram.com/briannabums/',
+      url: 'https://www.instagram.com/briannabums19/',
       className: 'instagram',
       ariaLabel: 'Visit Instagram profile'
     },
