@@ -321,8 +321,17 @@
 }
 
 .link-icon {
-  font-size: 20px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon styling for SVG icons */
+.link-icon .icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 .link-text {
@@ -352,6 +361,17 @@
 .link-button.instagram:hover {
   background: linear-gradient(135deg, #3b4de0 0%, #5249d1 50%, #7c35a8 100%);
   box-shadow: 0 15px 40px rgba(131, 58, 180, 0.4);
+}
+
+.link-button.twitter {
+  background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3);
+}
+
+.link-button.twitter:hover {
+  background: linear-gradient(135deg, #1a91da 0%, #0c7bc2 100%);
+  box-shadow: 0 15px 40px rgba(29, 161, 242, 0.4);
 }
 
 .link-button.bluesky {
@@ -415,6 +435,11 @@
   .display-name {
     font-size: 32px;
   }
+
+  .link-icon .icon {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -454,6 +479,11 @@
     font-size: 15px;
   }
 
+  .link-icon .icon {
+    width: 16px;
+    height: 16px;
+  }
+
   .social-icons span {
     font-size: 24px;
   }
@@ -467,6 +497,11 @@
   .link-button {
     padding: 12px 16px;
     font-size: 14px;
+  }
+
+  .link-icon .icon {
+    width: 14px;
+    height: 14px;
   }
 }
 
