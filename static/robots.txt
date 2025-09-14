@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /videos/
+Allow: /static/
+
+# Sitemap location
+Sitemap: https://briannnabums.com/sitemap.xml
+
+# Crawl delay to be respectful
+Crawl-delay: 1
+
+# Block common bot directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.well-known/
+Disallow: /api/
+Disallow: /temp/
+Disallow: /cache/
+
+# Allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
