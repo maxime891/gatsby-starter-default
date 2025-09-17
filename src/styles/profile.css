@@ -130,10 +130,10 @@ body {
   position: relative;
   z-index: 3;
   width: 100%;
-  max-width: 1600px; /* Increased from 1400px */
+  max-width: 1600px;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.2fr; /* Adjusted to give more space to video */
+  grid-template-columns: 1fr 1.2fr;
   grid-template-rows: auto 1fr;
   gap: 40px;
   padding: 40px;
@@ -260,12 +260,13 @@ body {
   animation: slideInFromRight 1s ease-out 0.6s both;
 }
 
-/* Video container - ENHANCED for larger display with flexible dimensions */
+/* Video container - Optimized for TikTok dimensions (9:16) */
 .video-container {
   position: relative;
   width: 100%;
-  max-width: 500px; /* Increased from 500px */
-  max-height: 80vh; /* Prevent video from being too tall */
+  max-width: 400px; /* Based on 1080px width scaled down for responsiveness */
+  aspect-ratio: 9/16; /* TikTok standard portrait aspect ratio */
+  max-height: 90vh; /* Slightly increased to accommodate taller video */
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow-heavy);
@@ -273,8 +274,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto; /* Center container */
+  padding: 0; /* Remove padding to avoid extra space */
 }
 
+/* Video placeholder */
 .video-placeholder {
   position: absolute;
   top: 0;
@@ -289,6 +293,7 @@ body {
   min-height: 200px; /* Ensure placeholder has minimum height */
 }
 
+/* Loading spinner */
 .loading-spinner {
   width: 50px;
   height: 50px;
@@ -303,14 +308,16 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Video player - Natural dimensions display */
+/* Video player - Optimized to fill container without black bars */
 .video-player {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain; /* Changed from cover to contain to show full video */
+  max-height: 100%;
+  object-fit: cover; /* Ensures video fills container without black bars */
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -351,6 +358,7 @@ body {
   transform: scale(1.1);
 }
 
+/* Video overlay */
 .video-overlay {
   position: absolute;
   bottom: 0;
@@ -381,14 +389,14 @@ body {
   }
 }
 
-/* Responsive Design - Enhanced for better video viewing */
+/* Responsive Design - Adjusted for TikTok video sizing */
 @media (max-width: 1200px) {
   .landing-content {
     max-width: 1200px;
   }
 
   .video-container {
-    max-width: 700px;
+    max-width: 480px; /* Scaled down for smaller screens */
   }
 }
 
@@ -416,10 +424,9 @@ body {
   }
 
   .video-container {
-    max-width: 600px; /* Increased from 400px */
+    max-width: 450px; /* Adjusted for tablet screens */
   }
 
-  /* Social buttons responsive adjustments */
   .social-media-buttons {
     top: 15px;
     right: 15px;
@@ -459,7 +466,7 @@ body {
   }
 
   .video-container {
-    max-width: 500px; /* Increased from 350px */
+    max-width: 360px; /* Adjusted for smaller screens */
   }
 
   .sound-toggle {
@@ -470,7 +477,6 @@ body {
     font-size: 1.1rem;
   }
 
-  /* Social buttons mobile adjustments */
   .social-media-buttons {
     top: 10px;
     right: 10px;
@@ -509,7 +515,7 @@ body {
   }
 
   .video-container {
-    max-width: 400px; /* Increased from 300px */
+    max-width: 300px; /* Adjusted for mobile screens */
   }
 
   .sound-toggle {
@@ -524,7 +530,6 @@ body {
     background-attachment: scroll;
   }
 
-  /* Social buttons smallest screen adjustments */
   .social-media-buttons {
     top: 8px;
     right: 8px;
@@ -561,7 +566,6 @@ body {
   outline-offset: 2px;
 }
 
-/* Social button focus states */
 .social-button:focus {
   outline: 2px solid rgba(255, 255, 255, 0.8);
   outline-offset: 2px;

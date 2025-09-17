@@ -90,7 +90,7 @@ const IndexPage = () => {
 
   // Configuration - Just change these values
   const config = {
-    brandName: "BriannaBums",
+    brandName: "Brianna Bums",
     mainTitle: "Exclusive Premium Content",
     buttonText: "CLAIM SUBSCRIPTION",
     buttonUrl: "https://onlyfans.com/briannabums/c458",
