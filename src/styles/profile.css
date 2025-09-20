@@ -264,9 +264,9 @@ body {
 .video-container {
   position: relative;
   width: 100%;
-  max-width: 400px; /* Based on 1080px width scaled down for responsiveness */
+  max-width: 320px; /* Reduced from 400px for smaller video */
   aspect-ratio: 9/16; /* TikTok standard portrait aspect ratio */
-  max-height: 90vh; /* Slightly increased to accommodate taller video */
+  max-height: 80vh; /* Slightly reduced to fit smaller video */
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow-heavy);
@@ -276,6 +276,31 @@ body {
   justify-content: center;
   margin: 0 auto; /* Center container */
   padding: 0; /* Remove padding to avoid extra space */
+}
+
+/* Responsive Design - Adjusted for TikTok video sizing */
+@media (max-width: 1200px) {
+  .video-container {
+    max-width: 300px; /* Reduced from 480px */
+  }
+}
+
+@media (max-width: 1024px) {
+  .video-container {
+    max-width: 280px; /* Reduced from 450px */
+  }
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    max-width: 260px; /* Reduced from 360px */
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container {
+    max-width: 240px; /* Reduced from 300px */
+  }
 }
 
 /* Video placeholder */
